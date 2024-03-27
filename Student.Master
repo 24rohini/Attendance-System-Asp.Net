@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Student.master.cs" Inherits="AttendanceSystem.Student" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Load jQuery UI from Google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!-- Load jQuery UI CSS from Google CDN -->
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" />
+
+<!-- Your existing JavaScript code -->
+<script type="text/javascript">
+    $(function () {
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm',
+            onClose: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+            }
+        });
+    });
+</script>
+
+<!-- Your existing CSS styles -->
+<style type="text/css">
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+     <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+            
+        <div>
+            <table align="center">
+                <tr style="width: 1200px; color: Aqua; height: 150px">
+ <td>
+     <asp:Image ID="Image1" runat="server" BorderColor="#666666" BorderWidth="3px" Height="150px" ImageUrl="~/images/attendance.jpg" Width="1200px"/>
+   </td>
+    </tr>
+                 <tr style="border-width: 8px; border-color: #666666; width: 1200px; color: #666666; height: 60px" bgcolor=palegoldenrod>
+                     <td>
+                           <table align="center" cellpadding="8">
+                               <tr style="border-color: #666666;">
+                                    <td>
+     <asp:Button ID="BtnHome" runat="server" Text="Home Page" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" BackColor="Snow" OnClick="BtnHome_Click"  />
+ </td>
+                                   <td></td><td></td><td></td>
+                                   <td>
+                                        <asp:Button ID="BtnAttedance" runat="server" Text="Attendance" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" BackColor="Snow" OnClick="BtnAttedance_Click"   />
+                                   </td>
+                                   <td></td><td></td><td></td>
+                                    <td>
+      <asp:Button ID="BtnLogout" runat="server" Text="Logout" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" BackColor="Snow" OnClick="BtnLogout_Click"   />
+ </td>
+ <td></td><td></td><td></td>
+                                 
+                                   </tr>
+
+                                   </table>
+                     </td>
+                     </tr>
+            </table>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            
+            <table align="center" width="1200">
+
+         <tr style="width: 1200px; color: Gray; height: 20px;" bgcolor="Gray">
+          <td style="width:1100px; height:25px; background-color:Gray; text-align:center; color:White">&copy 
+          <asp:Label ID="Label1" runat="server" Text="Attendance System"
+ ForeColor ="White" Font-Size="Medium" Font-Bold="True"></asp:Label>
+
+</td>
+
+</tr>
+
+</table>
+        </div>
+   
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+     </form>
+</body>
+</html>
